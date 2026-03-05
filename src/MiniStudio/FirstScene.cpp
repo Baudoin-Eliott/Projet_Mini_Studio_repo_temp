@@ -2,7 +2,8 @@
 #include "Debug.h"
 
 #include "InputManager.h"
-
+#include "AudioManager.h"
+#include <iostream>
 
 void FirstScene::OnInitialize()
 {
@@ -11,6 +12,10 @@ void FirstScene::OnInitialize()
 
 	m_actionMap.bind(Action::Dash, { {sf::Keyboard::Z, TriggerState::Held},{sf::Mouse::Left, TriggerState::Held} });
 	// et dash, quand Z et click gauche en meme temps
+	
+	if (!m_audioMap.addSound(Sounds::Boom, { "res/PetitBoom.wav" })) {
+		std::cout << "canot load sound Boom \n";
+	}
 }
 
 void FirstScene::OnWindowEvent(const sf::Event& event)
@@ -28,6 +33,11 @@ void FirstScene::OnUpdate()
 
 	if (m_actionMap.isActive(Action::Jump)) {
 		Debug::DrawText(640, 300, "Jump !", 0.5, 0.5, sf::Color::White);
+	}
+
+	if (InputManager::getInstance().isKeyDown(sf::Keyboard::Space)) {
+
+		m_audioMap.playSound(Sounds::Boom);
 	}
 
 }
