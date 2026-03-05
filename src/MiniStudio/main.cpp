@@ -4,7 +4,7 @@
 
 #include "GameManager.h"
 #include "FirstScene.h"
-
+#include "ActionMap.h"
 
 #include <cstdlib>
 #include <crtdbg.h>
