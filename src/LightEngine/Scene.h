@@ -17,7 +17,7 @@ protected:
 	Scene() = default;
 
 	virtual void OnInitialize() = 0;
-	virtual void OnEvent(const sf::Event& event) = 0;
+	virtual void OnWindowEvent(const sf::Event& event) = 0;
 	virtual void OnUpdate() = 0;
 
 public:
@@ -30,6 +30,7 @@ public:
 	int GetWindowHeight() const;
 
 	friend GameManager;
+	friend class InputManager;
 };
 
 #include "Scene.inl"

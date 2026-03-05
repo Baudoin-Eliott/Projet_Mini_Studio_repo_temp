@@ -4,7 +4,7 @@ class FirstScene : public Scene
 {
 public:
 	void OnInitialize() override;
-	void OnEvent(const sf::Event& event) override;
+	void OnWindowEvent(const sf::Event& event) override;
 	void OnUpdate() override;
 };
 

@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "Debug.h"
+#include "InputManager.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -63,11 +64,13 @@ void GameManager::Run()
 	_ASSERT(mpScene != nullptr);
 
 	sf::Clock clock;
+	InputManager &inputManager = InputManager::getInstance();
+
 	while (mpWindow->isOpen())
 	{
 		SetDeltaTime(clock.restart().asSeconds());
 
-		HandleInput();
+		inputManager.update();
 
 		Update();
 		
@@ -75,19 +78,6 @@ void GameManager::Run()
 	}
 }
 
-void GameManager::HandleInput()
-{
-	sf::Event event;
-	while (mpWindow->pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed)
-		{
-			mpWindow->close();
-		}
-
-		mpScene->OnEvent(event);
-	}
-}
 
 void GameManager::Update()
 {

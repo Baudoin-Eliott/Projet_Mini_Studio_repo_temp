@@ -38,7 +38,6 @@ private:
 
 	void Run();
 	
-	void HandleInput();
 	void Update();
 	void Draw();
 
@@ -61,6 +60,7 @@ public:
 
 	friend Debug;
 	friend Scene;
+	friend class InputManager;
 };
 
 #include "GameManager.inl"
