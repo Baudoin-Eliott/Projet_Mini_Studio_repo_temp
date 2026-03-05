@@ -12,12 +12,12 @@ class SampleScene : public Scene
 	DummyEntity* pEntitySelected;
 
 private:
-	void TrySetSelectedEntity(DummyEntity* pEntity, int x, int y);
+	void TrySetSelectedEntity(DummyEntity* pEntity, int x, int y) {};
 
 public:
-	void OnInitialize() override;
-	void OnEvent(const sf::Event& event) override;
-	void OnUpdate() override;
+	void OnInitialize() override {};
+	void OnEvent(const sf::Event& event) override {};
+	void OnUpdate() override {};
 };
 
 
