@@ -37,7 +37,7 @@ public:
 	void SetSpeed(float speed) { mSpeed = speed; }
 	void SetTag(int tag) { mTag = tag; }
 	float GetRadius() const { return mShape.getRadius(); }
-	void SetRigidBody(bool isRigitBody) { mRigidBody = isRigitBody; }
+	void SetRigidBody(bool isRigidBody) { mRigidBody = isRigidBody; }
 	bool IsRigidBody() const { return mRigidBody; }
 
     sf::Vector2f GetPosition(float ratioX = 0.5f, float ratioY = 0.5f) const;
