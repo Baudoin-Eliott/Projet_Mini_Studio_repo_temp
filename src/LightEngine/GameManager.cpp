@@ -51,7 +51,7 @@ void GameManager::CreateWindow(unsigned int width, unsigned int height, const ch
 
 void GameManager::Run()
 {
-	if (mpWindow == nullptr) 
+	if (mpWindow == nullptr)
 	{
 		std::cout << "Window not created, creating default window" << std::endl;
 		CreateWindow(1280, 720, "Default window");
@@ -64,7 +64,7 @@ void GameManager::Run()
 	_ASSERT(mpScene != nullptr);
 
 	sf::Clock clock;
-	InputManager &inputManager = InputManager::getInstance();
+	InputManager& inputManager = InputManager::getInstance();
 
 	while (mpWindow->isOpen())
 	{
@@ -73,7 +73,7 @@ void GameManager::Run()
 		inputManager.update();
 
 		Update();
-		
+
 		Draw();
 	}
 }
@@ -83,50 +83,50 @@ void GameManager::Update()
 {
 	mpScene->OnUpdate();
 
-    //Update
-    for (auto it = mEntities.begin(); it != mEntities.end(); )
-    {
+	//Update
+	for (auto it = mEntities.begin(); it != mEntities.end(); )
+	{
 		Entity* entity = *it;
 
-        entity->Update();
+		entity->Update();
 
-        if (entity->ToDestroy() == false)
-        {
-            ++it;
-            continue;
-        }
+		if (entity->ToDestroy() == false)
+		{
+			++it;
+			continue;
+		}
 
-        mEntitiesToDestroy.push_back(entity);
-        it = mEntities.erase(it);
-    }
+		mEntitiesToDestroy.push_back(entity);
+		it = mEntities.erase(it);
+	}
 
-    //Collision
-    for (auto it1 = mEntities.begin(); it1 != mEntities.end(); ++it1)
-    {
-        auto it2 = it1;
-        ++it2;
-        for (; it2 != mEntities.end(); ++it2)
-        {
-            Entity* entity = *it1;
-            Entity* otherEntity = *it2;
+	//Collision
+	for (auto it1 = mEntities.begin(); it1 != mEntities.end(); ++it1)
+	{
+		auto it2 = it1;
+		++it2;
+		for (; it2 != mEntities.end(); ++it2)
+		{
+			Entity* entity = *it1;
+			Entity* otherEntity = *it2;
 
-            if (entity->IsColliding(otherEntity))
-            {
+			if (entity->IsColliding(otherEntity))
+			{
 				if (entity->IsRigidBody() && otherEntity->IsRigidBody())
 					entity->Repulse(otherEntity);
 
-                entity->OnCollision(otherEntity);
-                otherEntity->OnCollision(entity);
-            }
-        }
-    }
-
-	for (auto it = mEntitiesToDestroy.begin(); it != mEntitiesToDestroy.end(); ++it) 
-	{
-		delete *it;
+				entity->OnCollision(otherEntity);
+				otherEntity->OnCollision(entity);
+			}
+		}
 	}
 
-    mEntitiesToDestroy.clear();
+	for (auto it = mEntitiesToDestroy.begin(); it != mEntitiesToDestroy.end(); ++it)
+	{
+		delete* it;
+	}
+
+	mEntitiesToDestroy.clear();
 
 	for (auto it = mEntitiesToAdd.begin(); it != mEntitiesToAdd.end(); ++it)
 	{
@@ -139,12 +139,15 @@ void GameManager::Update()
 void GameManager::Draw()
 {
 	mpWindow->clear(mClearColor);
-	
+
 	for (Entity* entity : mEntities)
 	{
-		mpWindow->draw(*entity->GetShape());
+		if (entity->HasTexture())
+			mpWindow->draw(entity->mSprite);
+		else
+			mpWindow->draw(*entity->GetShape());
 	}
-	
+
 	Debug::Get()->Draw(mpWindow);
 
 	mpWindow->display();

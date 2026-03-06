@@ -2,6 +2,9 @@
 
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include "Texture.h"
+
 
 namespace sf 
 {
@@ -21,6 +24,7 @@ class Entity
     };
 
 protected:
+	sf::Sprite mSprite;
     sf::CircleShape mShape;
     sf::Vector2f mDirection;
 	Target mTarget;
@@ -30,6 +34,14 @@ protected:
 	bool mRigidBody = false;
 
 public:
+	void SetTexture(std::shared_ptr<Texture> _texture) {
+		mSprite.setTexture(*_texture->getTexture());
+	}
+
+
+	bool HasTexture() {
+		return mSprite.getTexture() != nullptr;
+	}
 	bool GoToDirection(int x, int y, float speed = -1.f);
     bool GoToPosition(int x, int y, float speed = -1.f);
     void SetPosition(float x, float y, float ratioX = 0.5f, float ratioY = 0.5f);
