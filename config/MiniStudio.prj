@@ -21,7 +21,7 @@
             "out_dir": "$(ProjectDir)Build\\$(Configuration)\\",
             "platform_toolset": "v143",
             "precompiled_header": "NotUsing",
-            "precompiled_header_file": "pch.h",
+            "precompiled_header_file": "",
             "preprocessor_definitions": "_DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC",
             "sdl_check": "true",
             "subsystem": "Console",

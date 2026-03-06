@@ -1,57 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-  <ItemGroup>
-    <Filter Include="header">
-      <UniqueIdentifier>{783FCD16-DA27-48AE-A442-3B2089E6A40F}</UniqueIdentifier>
-      <Extensions>h;hpp</Extensions>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{3730D15B-BB16-4927-A6D7-6167DF354732}</UniqueIdentifier>
-      <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
-    </Filter>
-    <Filter Include="source">
-      <UniqueIdentifier>{114E01E8-C2E3-4E64-8DED-1FA52BB0B954}</UniqueIdentifier>
-      <Extensions>cpp;c</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\src\MiniStudio\FirstScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MiniStudio\main.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MiniStudio\pch.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\..\src\MiniStudio\FirstScene.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\MiniStudio\main.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\MiniStudio\pch.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\MiniStudio\resource.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <None Include="..\..\..\src\MiniStudio\app.ico">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\..\..\src\MiniStudio\app.rc">
-      <Filter>resource</Filter>
-    </None>
-    <None Include="..\..\..\src\MiniStudio\small.ico">
-      <Filter>resource</Filter>
-    </None>
-    <ClCompile Include="..\..\..\src\MiniStudio\Player.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\src\MiniStudio\Player.h">
-      <Filter>header</Filter>
-    </ClInclude>
-  </ItemGroup>
+    <ItemGroup>
+        <Filter Include="header">
+            <UniqueIdentifier>{20CA5C07-F58C-4F51-BF93-CF708D0BF495}</UniqueIdentifier>
+            <Extensions>h;hpp</Extensions>
+        </Filter>
+        <Filter Include="resource">
+            <UniqueIdentifier>{2F00895C-19B8-47FD-B1C2-977B30EDF0DC}</UniqueIdentifier>
+            <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
+        </Filter>
+        <Filter Include="source">
+            <UniqueIdentifier>{BFAB1336-26A6-4749-B7C9-8B3E02E6EED6}</UniqueIdentifier>
+            <Extensions>cpp;c</Extensions>
+        </Filter>
+    </ItemGroup>
+    <ItemGroup>
+        <ClCompile Include="..\..\..\src\MiniStudio\FirstScene.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\MiniStudio\main.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\MiniStudio\Player.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClInclude Include="..\..\..\src\MiniStudio\FirstScene.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\MiniStudio\Player.h">
+            <Filter>header</Filter>
+        </ClInclude>
+    </ItemGroup>
 </Project>
