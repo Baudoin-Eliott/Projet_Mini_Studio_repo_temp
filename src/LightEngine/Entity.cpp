@@ -299,15 +299,11 @@ void Entity::SetPosition(float x, float y, float ratioX, float ratioY)
 			return shape.getSize();
 		}, mShape);
 
-<<<<<<< Updated upstream
-	mShape.setPosition(x, y);
-=======
 	x -= size.x * ratioX;
 	y -= size.y * ratioY;
 
 	std::visit([x, y](auto& shape) {shape.setPosition(x, y);}, mShape);
 	mSprite.setPosition(x, y);
->>>>>>> Stashed changes
 
 	//#TODO Optimise
 	if (mTarget.isSet)
@@ -403,11 +399,6 @@ void Entity::Update()
 	float dt = GetDeltaTime();
 	float distance = dt * mSpeed;
 	sf::Vector2f translation = distance * mDirection;
-<<<<<<< Updated upstream
-	mShape.move(translation);
-=======
->>>>>>> Stashed changes
-
 	std::visit([translation](auto& shape) {
 		shape.move(translation);
 		}, mShape);

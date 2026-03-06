@@ -5,14 +5,11 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include "Texture.h"
-<<<<<<< Updated upstream
-=======
 #include <memory>
 #include <variant>
->>>>>>> Stashed changes
 
 
-namespace sf 
+namespace sf
 {
 	class Shape;
     class Color;
@@ -22,7 +19,7 @@ class Scene;
 
 class Entity
 {
-    struct Target 
+    struct Target
     {
 		sf::Vector2i position;
         float distance;
@@ -31,13 +28,8 @@ class Entity
 
 protected:
 	sf::Sprite mSprite;
-<<<<<<< Updated upstream
-    sf::CircleShape mShape;
-    sf::Vector2f mDirection;
-=======
 	std::variant<sf::CircleShape, sf::RectangleShape> mShape;
 	sf::Vector2f mDirection;
->>>>>>> Stashed changes
 	Target mTarget;
     float mSpeed = 0.f;
     bool mToDestroy = false;
@@ -48,8 +40,6 @@ protected:
 public:
 	void SetTexture(std::shared_ptr<Texture> _texture) {
 		mSprite.setTexture(*_texture->getTexture());
-<<<<<<< Updated upstream
-=======
 
 		sf::Vector2f size = std::visit([](const auto& shape) -> sf::Vector2f {
 			using T = std::decay_t<decltype(shape)>;
@@ -66,7 +56,6 @@ public:
 		float scaleY = size.y / _texture->getHeight();
 		mSprite.setScale(scaleX, scaleY);
 
->>>>>>> Stashed changes
 	}
 
 
@@ -80,14 +69,6 @@ public:
 	void SetDirection(float x, float y, float speed = -1.f);
 	void SetSpeed(float speed) { mSpeed = speed; }
 	void SetTag(int tag) { mTag = tag; }
-<<<<<<< Updated upstream
-	float GetRadius() const { return mShape.getRadius(); }
-	void SetRigidBody(bool isRigitBody) { mRigidBody = isRigitBody; }
-	bool IsRigidBody() const { return mRigidBody; }
-
-    sf::Vector2f GetPosition(float ratioX = 0.5f, float ratioY = 0.5f) const;
-	sf::Shape* GetShape() { return &mShape; }
-=======
 	float GetRadius() const;
 	void SetRigidBody(bool isRigidBody) { mRigidBody = isRigidBody; }
 	bool IsRigidBody() const { return mRigidBody; }
@@ -97,7 +78,6 @@ public:
 		return std::visit([](auto& shape) -> sf::Shape* { return &shape; }, mShape);
 	}
 
->>>>>>> Stashed changes
 
 	bool IsTag(int tag) const { return mTag == tag; }
     bool IsColliding(Entity* other) const;
@@ -105,7 +85,7 @@ public:
 
     void Destroy();
 	bool ToDestroy() const { return mToDestroy; }
-	
+
 	template<typename T>
 	T* GetScene() const;
 
@@ -126,7 +106,7 @@ protected:
     virtual void OnCollision(Entity* collidedWith) {};
 	virtual void OnInitialize() {};
 	virtual void OnDestroy() {};
-	
+
 private:
     void Update();
 	void Initialize(float radius, const sf::Color& color);
