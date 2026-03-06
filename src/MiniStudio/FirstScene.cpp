@@ -7,6 +7,7 @@
 
 void FirstScene::OnInitialize()
 {
+<<<<<<< Updated upstream
 	m_actionMap.bind(Action::Jump, {{sf::Keyboard::Space, TriggerState::Held}});
 	// donc la jump se declanche quand la touche space est maintenue
 
@@ -16,6 +17,19 @@ void FirstScene::OnInitialize()
 	if (!m_audioMap.addSound(Sounds::Boom, { "res/PetitBoom.wav" })) {
 		std::cout << "canot load sound Boom \n";
 	}
+=======
+	m_player = CreateEntity<Player>(35, sf::Color::Red);
+	m_player->init(150, 100);
+	m_player->SetPosition(640, 360);
+	m_player->SetRigidBody(true);
+
+
+	m_rectPlayer = CreateEntity<RectPlayer>({75, 50}, sf::Color::Blue);
+	m_rectPlayer->init(150, 100);
+	m_rectPlayer->SetPosition(760, 360);
+	m_rectPlayer->SetRigidBody(true);
+	m_rectPlayer->SetStatic(true);
+>>>>>>> Stashed changes
 }
 
 void FirstScene::OnWindowEvent(const sf::Event& event)
