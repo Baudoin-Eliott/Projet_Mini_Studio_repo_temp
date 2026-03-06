@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "AssetsManager.h"
 
 void Player::OnInitialize()
 {
@@ -15,6 +16,10 @@ void Player::OnInitialize()
 
 	m_actions.bind(Action::MoveRight, { {sf::Keyboard::D, TriggerState::Held} });
 	m_actions.bind(Action::MoveRight, { {sf::Keyboard::Right, TriggerState::Held} });
+
+	AssetsManager& am = AssetsManager::getInstance();
+	std::shared_ptr<Texture> tex = am.addTexture("Player", "res/tempPlayer.png");
+	SetTexture(tex);
 }
 
 void Player::OnUpdate()

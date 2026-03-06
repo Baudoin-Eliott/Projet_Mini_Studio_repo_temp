@@ -4,38 +4,46 @@
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include "Texture.h"
+#include <memory>
 
 
-namespace sf 
+namespace sf
 {
 	class Shape;
-    class Color;
+	class Color;
 }
 
 class Scene;
 
 class Entity
 {
-    struct Target 
-    {
+	struct Target
+	{
 		sf::Vector2i position;
-        float distance;
+		float distance;
 		bool isSet;
-    };
+	};
 
 protected:
 	sf::Sprite mSprite;
-    sf::CircleShape mShape;
-    sf::Vector2f mDirection;
+	sf::CircleShape mShape;
+	sf::Vector2f mDirection;
 	Target mTarget;
-    float mSpeed = 0.f;
-    bool mToDestroy = false;
-    int mTag = -1;
+	float mSpeed = 0.f;
+	bool mToDestroy = false;
+	int mTag = -1;
 	bool mRigidBody = false;
 
 public:
 	void SetTexture(std::shared_ptr<Texture> _texture) {
 		mSprite.setTexture(*_texture->getTexture());
+
+		float diameter = mShape.getRadius() * 2;
+		float scaleX = diameter / _texture->getWidth();
+		float scaleY = diameter / _texture->getHeight();
+		mSprite.setScale(scaleX, scaleY);
+
+
 	}
 
 
@@ -43,8 +51,8 @@ public:
 		return mSprite.getTexture() != nullptr;
 	}
 	bool GoToDirection(int x, int y, float speed = -1.f);
-    bool GoToPosition(int x, int y, float speed = -1.f);
-    void SetPosition(float x, float y, float ratioX = 0.5f, float ratioY = 0.5f);
+	bool GoToPosition(int x, int y, float speed = -1.f);
+	void SetPosition(float x, float y, float ratioX = 0.5f, float ratioY = 0.5f);
 	void SetDirection(float x, float y, float speed = -1.f);
 	void SetSpeed(float speed) { mSpeed = speed; }
 	void SetTag(int tag) { mTag = tag; }
@@ -52,41 +60,41 @@ public:
 	void SetRigidBody(bool isRigidBody) { mRigidBody = isRigidBody; }
 	bool IsRigidBody() const { return mRigidBody; }
 
-    sf::Vector2f GetPosition(float ratioX = 0.5f, float ratioY = 0.5f) const;
+	sf::Vector2f GetPosition(float ratioX = 0.5f, float ratioY = 0.5f) const;
 	sf::Shape* GetShape() { return &mShape; }
 
 	bool IsTag(int tag) const { return mTag == tag; }
-    bool IsColliding(Entity* other) const;
+	bool IsColliding(Entity* other) const;
 	bool IsInside(float x, float y) const;
 
-    void Destroy();
+	void Destroy();
 	bool ToDestroy() const { return mToDestroy; }
-	
+
 	template<typename T>
 	T* GetScene() const;
 
-    Scene* GetScene() const;
+	Scene* GetScene() const;
 	float GetDeltaTime() const;
 
-    template<typename T>
-    T* CreateEntity(float radius, const sf::Color& color);
+	template<typename T>
+	T* CreateEntity(float radius, const sf::Color& color);
 
 protected:
-    Entity() = default;
-    ~Entity() = default;
+	Entity() = default;
+	~Entity() = default;
 
-    virtual void OnUpdate() {};
-    virtual void OnCollision(Entity* collidedWith) {};
+	virtual void OnUpdate() {};
+	virtual void OnCollision(Entity* collidedWith) {};
 	virtual void OnInitialize() {};
 	virtual void OnDestroy() {};
-	
+
 private:
-    void Update();
+	void Update();
 	void Initialize(float radius, const sf::Color& color);
 	void Repulse(Entity* other);
 
-    friend class GameManager;
-    friend Scene;
+	friend class GameManager;
+	friend Scene;
 };
 
 #include "Entity.inl"

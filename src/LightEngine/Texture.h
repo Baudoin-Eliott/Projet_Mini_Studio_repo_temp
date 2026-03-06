@@ -27,5 +27,5 @@ public:
 
 private:
 	friend class Renderer;
-	friend class TextureManager;
+	friend class AssetsManager;
 };

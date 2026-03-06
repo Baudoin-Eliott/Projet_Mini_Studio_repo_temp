@@ -144,9 +144,13 @@ void GameManager::Draw()
 	{
 		if (entity->HasTexture())
 			mpWindow->draw(entity->mSprite);
+		
 		else
 			mpWindow->draw(*entity->GetShape());
+
 	}
+
+
 
 	Debug::Get()->Draw(mpWindow);
 

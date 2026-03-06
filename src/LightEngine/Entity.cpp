@@ -84,6 +84,7 @@ void Entity::SetPosition(float x, float y, float ratioX, float ratioY)
 	y -= size * ratioY;
 
 	mShape.setPosition(x, y);
+	mSprite.setPosition(x, y);
 
 	//#TODO Optimise
 	if (mTarget.isSet) 
@@ -149,6 +150,7 @@ void Entity::Update()
 	float distance = dt * mSpeed;
 	sf::Vector2f translation = distance * mDirection;
 	mShape.move(translation);
+	mSprite.setPosition(mShape.getPosition());
 
 	if (mTarget.isSet) 
 	{
