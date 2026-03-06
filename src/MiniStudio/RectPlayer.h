@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "ActionMap.h"
 
-class Player : public Entity
+class RectPlayer : public Entity
 {
 private:
 	enum class Action {
