@@ -4,6 +4,7 @@ class GameManager;
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
 
 class Scene
 {
@@ -19,6 +20,7 @@ protected:
 	virtual void OnInitialize() = 0;
 	virtual void OnWindowEvent(const sf::Event& event) = 0;
 	virtual void OnUpdate() = 0;
+	virtual void OnDraw(sf::RenderTarget& target) {}
 
 public:
 	template<typename T>

@@ -140,6 +140,8 @@ void GameManager::Draw()
 {
 	mpWindow->clear(mClearColor);
 
+	mpScene->OnDraw(*mpWindow);
+
 	for (Entity* entity : mEntities)
 	{
 		if (entity->HasTexture())
