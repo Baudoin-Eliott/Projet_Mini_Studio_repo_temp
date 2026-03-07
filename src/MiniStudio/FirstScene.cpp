@@ -1,5 +1,6 @@
 #include "FirstScene.h"
 #include "Debug.h"
+#include "TmxThing.h"
 
 #include "InputManager.h"
 #include "AudioManager.h"
@@ -7,6 +8,22 @@
 
 void FirstScene::OnInitialize()
 {
+	m_map.load("res/base.tmx");
+
+	for (const TmxObjectGroup& group : m_map.objectGroup)
+	{
+		if (group.name != "Collision")
+			continue;
+
+		for (const TmxObject& obj : group.objects)
+		{
+			Wall* wall = CreateEntity<Wall>(sf::Vector2f(obj.width, obj.height), sf::Color::Transparent);
+			wall->SetPosition(obj.x, obj.y, 0.f, 0.f);
+			wall->SetRigidBody(true);
+			wall->SetStatic(true);
+		}
+	}
+
 	m_player = CreateEntity<Player>(35, sf::Color::Red);
 	m_player->init(150, 100);
 	m_player->SetPosition(640, 360);
@@ -21,6 +38,11 @@ void FirstScene::OnInitialize()
 
 void FirstScene::OnWindowEvent(const sf::Event& event)
 {
+}
+
+void FirstScene::OnDraw(sf::RenderTarget& target)
+{
+	target.draw(m_map);
 }
 
 void FirstScene::OnUpdate()

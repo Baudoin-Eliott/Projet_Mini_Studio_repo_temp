@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-<<<<<<< Updated upstream
     <ItemGroup>
         <Filter Include="header">
-            <UniqueIdentifier>{F2891924-4EB9-4E9D-B472-7C1B6FE5A343}</UniqueIdentifier>
+            <UniqueIdentifier>{F087EE33-2D9D-4FF1-8B2E-42A3B718916D}</UniqueIdentifier>
             <Extensions>h;hpp</Extensions>
         </Filter>
         <Filter Include="resource">
-            <UniqueIdentifier>{0631C366-BAA0-4FBB-907F-46FA452FC637}</UniqueIdentifier>
+            <UniqueIdentifier>{2F1C4B3D-2485-441F-8B0A-D906D29F79B0}</UniqueIdentifier>
             <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
         </Filter>
         <Filter Include="source">
-            <UniqueIdentifier>{E0CA6CFF-D5B3-4EA4-A61A-971C9CA81876}</UniqueIdentifier>
+            <UniqueIdentifier>{A536765B-E5FF-4B07-AE41-DB2228DF4346}</UniqueIdentifier>
             <Extensions>cpp;c</Extensions>
         </Filter>
     </ItemGroup>
@@ -25,6 +24,12 @@
         <ClCompile Include="..\..\..\src\MiniStudio\pch.cpp">
             <Filter>source</Filter>
         </ClCompile>
+        <ClCompile Include="..\..\..\src\MiniStudio\Player.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\MiniStudio\RectPlayer.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
         <ClInclude Include="..\..\..\src\MiniStudio\FirstScene.h">
             <Filter>header</Filter>
         </ClInclude>
@@ -34,7 +39,16 @@
         <ClInclude Include="..\..\..\src\MiniStudio\pch.h">
             <Filter>header</Filter>
         </ClInclude>
+        <ClInclude Include="..\..\..\src\MiniStudio\Player.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\MiniStudio\RectPlayer.h">
+            <Filter>header</Filter>
+        </ClInclude>
         <ClInclude Include="..\..\..\src\MiniStudio\resource.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\MiniStudio\Wall.h">
             <Filter>header</Filter>
         </ClInclude>
         <None Include="..\..\..\src\MiniStudio\app.ico">
@@ -48,45 +62,3 @@
         </None>
     </ItemGroup>
 </Project>
-=======
-  <ItemGroup>
-    <Filter Include="header">
-      <UniqueIdentifier>{20CA5C07-F58C-4F51-BF93-CF708D0BF495}</UniqueIdentifier>
-      <Extensions>h;hpp</Extensions>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{2F00895C-19B8-47FD-B1C2-977B30EDF0DC}</UniqueIdentifier>
-      <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
-    </Filter>
-    <Filter Include="source">
-      <UniqueIdentifier>{BFAB1336-26A6-4749-B7C9-8B3E02E6EED6}</UniqueIdentifier>
-      <Extensions>cpp;c</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\src\MiniStudio\FirstScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MiniStudio\main.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MiniStudio\Player.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\..\src\MiniStudio\FirstScene.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\MiniStudio\Player.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\..\src\MiniStudio\RectPlayer.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\src\MiniStudio\RectPlayer.h">
-      <Filter>header</Filter>
-    </ClInclude>
-  </ItemGroup>
-</Project>
->>>>>>> Stashed changes

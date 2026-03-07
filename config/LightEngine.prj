@@ -10,7 +10,7 @@
     "configuration": [
         {
             "additional_dependencies": "sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;opengl32.lib;glu32.lib;gdi32.lib;winmm.lib;dwmapi.lib;freetype.lib;%(AdditionalDependencies)",
-            "additional_include_directories": "$(SolutionDir)../../SFML-2.5.1/include;$(SolutionDir)../../extern/miniaudio",
+            "additional_include_directories": "$(SolutionDir)../../SFML-2.5.1/include;$(SolutionDir)../../extern/miniaudio;$(SolutionDir)../../extern/tinyxml2",
             "additional_library_directories": "$(SolutionDir)../../SFML-2.5.1/lib",
             "character_set": "Unicode",
             "conformance_mode": "true",
