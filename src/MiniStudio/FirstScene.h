@@ -2,15 +2,15 @@
 #include "Scene.h"
 #include "TmxThing.h"
 #include "Player.h"
-#include "RectPlayer.h"
 #include "Wall.h"
 
 
 class FirstScene : public Scene
 {
 private:
+	TmxMap m_map;
 	Player* m_player;
-	RectPlayer* m_rectPlayer;
+
 
 public:
 	void OnInitialize() override;

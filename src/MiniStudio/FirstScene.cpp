@@ -8,7 +8,7 @@
 
 void FirstScene::OnInitialize()
 {
-	m_map.load("res/base.tmx");
+	m_map.load("res/map.tmx");
 
 	for (const TmxObjectGroup& group : m_map.objectGroup)
 	{
@@ -24,16 +24,11 @@ void FirstScene::OnInitialize()
 		}
 	}
 
-	m_player = CreateEntity<Player>(35, sf::Color::Red);
+	m_player = CreateEntity<Player>(16, sf::Color::Red);
 	m_player->init(150, 100);
 	m_player->SetPosition(640, 360);
 	m_player->SetRigidBody(true);
 
-	m_rectPlayer = CreateEntity<RectPlayer>({75, 50}, sf::Color::Blue);
-	m_rectPlayer->init(150, 100);
-	m_rectPlayer->SetPosition(760, 360);
-	m_rectPlayer->SetRigidBody(true);
-	m_rectPlayer->SetStatic(true);
 }
 
 void FirstScene::OnWindowEvent(const sf::Event& event)
