@@ -7,6 +7,41 @@
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 
+float Velocity::GetSpeed()
+{
+	if (!_speedIsUpdated)
+	{
+		_speed = sqrt(_dir.x * _dir.x + _dir.y * _dir.y);
+		_speedIsUpdated = true;
+	}
+	return _speed;
+}
+void Velocity::SetSpeed(float speed)
+{
+	_dir /= GetSpeed();
+	_speed = speed;
+	_dir *= _speed;
+	_speedIsUpdated = true;
+}
+const sf::Vector2f& Velocity::GetDir()
+{
+	return _dir;
+}
+sf::Vector2f Velocity::GetCopyDir()
+{
+	return _dir;
+}
+
+void Velocity::SetDir(const sf::Vector2f& dir)
+{
+	_dir = dir;
+	_speedIsUpdated = false;
+}
+void Velocity::operator+=(const sf::Vector2f& addToDir)
+{
+	_dir += addToDir;
+	_speedIsUpdated = false;
+}
 
 static void RepulseRectCircle(Entity* rectEntity, Entity* circleEntity,
 	const sf::RectangleShape& rect, const sf::CircleShape& circle,
@@ -94,7 +129,6 @@ void Entity::Initialize(float radius, const sf::Color& color)
 			shape.setFillColor(color);
 		}
 		}, mShape);
-	mDirection = sf::Vector2f(0.0f, 0.0f);
 
 
 	mTarget.isSet = false;
@@ -112,7 +146,6 @@ void Entity::Initialize(sf::Vector2f size, const sf::Color& color)
 			shape.setFillColor(color);
 		}
 		}, mShape);
-	mDirection = sf::Vector2f(0.0f, 0.0f);
 
 
 	mTarget.isSet = false;
@@ -373,11 +406,11 @@ bool Entity::GoToPosition(int x, int y, float speed)
 
 void Entity::SetDirection(float x, float y, float speed)
 {
-	if (speed > 0)
-		mSpeed = speed;
 
-	mDirection = sf::Vector2f(x, y);
+	_velocity.SetDir({ x,y });
 	mTarget.isSet = false;
+	if (speed > 0)
+		_velocity.SetSpeed(speed);
 }
 
 float Entity::GetRadius() const
@@ -396,40 +429,28 @@ void Entity::Update()
 {
 	if (mIsSatic)
 		return;
+	// render
+	OnUpdate();
+}
+
+void Entity::FixedUpdate()
+{
+	if (mIsSatic)
+		return;
+
 	float dt = GetDeltaTime();
-	float distance = dt * mSpeed;
-	sf::Vector2f translation = distance * mDirection;
+	float distance = dt * _velocity.GetSpeed();
+	sf::Vector2f translation = _velocity.GetDir();
 	std::visit([translation](auto& shape) {
 		shape.move(translation);
 		}, mShape);
 
 	mSprite.setPosition(GetPosition());
 
-	if (mTarget.isSet)
-	{
-		float x1 = GetPosition(0.5f, 0.5f).x;
-		float y1 = GetPosition(0.5f, 0.5f).y;
 
-		float x2 = x1 + mDirection.x * mTarget.distance;
-		float y2 = y1 + mDirection.y * mTarget.distance;
 
-		Debug::DrawLine(x1, y1, x2, y2, sf::Color::Cyan);
-
-		Debug::DrawCircle(mTarget.position.x, mTarget.position.y, 5.f, sf::Color::Magenta);
-
-		mTarget.distance -= distance;
-
-		if (mTarget.distance <= 0.f)
-		{
-			SetPosition(mTarget.position.x, mTarget.position.y, 0.5f, 0.5f);
-			mDirection = sf::Vector2f(0.f, 0.f);
-			mTarget.isSet = false;
-		}
-	}
-
-	OnUpdate();
+	OnFixedUpdate();
 }
-
 Scene* Entity::GetScene() const
 {
 	return GameManager::Get()->GetScene();

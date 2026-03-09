@@ -17,6 +17,20 @@ namespace sf
 
 class Scene;
 
+struct Velocity
+{
+private:
+	sf::Vector2f _dir = { 0.f,0.f };
+	float _speed = 0;
+	bool _speedIsUpdated;
+public:
+	float GetSpeed();
+	void SetSpeed(float speed);
+	const sf::Vector2f& GetDir();
+	sf::Vector2f GetCopyDir();
+	void SetDir(const sf::Vector2f& dir);
+	void operator+=(const sf::Vector2f& addToDir);
+};
 class Entity
 {
     struct Target
@@ -29,14 +43,13 @@ class Entity
 protected:
 	sf::Sprite mSprite;
 	std::variant<sf::CircleShape, sf::RectangleShape> mShape;
-	sf::Vector2f mDirection;
 	Target mTarget;
-    float mSpeed = 0.f;
     bool mToDestroy = false;
     int mTag = -1;
 	bool mRigidBody = false;
 	bool mIsSatic = false;
 
+	Velocity _velocity;
 public:
 	void SetTexture(std::shared_ptr<Texture> _texture) {
 		mSprite.setTexture(*_texture->getTexture());
@@ -67,7 +80,7 @@ public:
     bool GoToPosition(int x, int y, float speed = -1.f);
     void SetPosition(float x, float y, float ratioX = 0.5f, float ratioY = 0.5f);
 	void SetDirection(float x, float y, float speed = -1.f);
-	void SetSpeed(float speed) { mSpeed = speed; }
+	void SetSpeed(float speed) { _velocity.SetSpeed(speed); }
 	void SetTag(int tag) { mTag = tag; }
 	float GetRadius() const;
 	void SetRigidBody(bool isRigidBody) { mRigidBody = isRigidBody; }
@@ -103,12 +116,14 @@ protected:
     ~Entity() = default;
 
     virtual void OnUpdate() {};
+	virtual void OnFixedUpdate() {};
     virtual void OnCollision(Entity* collidedWith) {};
 	virtual void OnInitialize() {};
 	virtual void OnDestroy() {};
 
 private:
     void Update();
+	void FixedUpdate();
 	void Initialize(float radius, const sf::Color& color);
 	void Initialize(sf::Vector2f size, const sf::Color& color);
 	void Repulse(Entity* other);

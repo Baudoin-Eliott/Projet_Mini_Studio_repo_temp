@@ -13,7 +13,7 @@
     <PropertyGroup Label="Globals">
         <VCProjectVersion>17.0</VCProjectVersion>
         <Keyword>Win32Proj</Keyword>
-        <ProjectGuid>{97EAFF83-EE8B-41F0-A0E5-CA09860C99E5}</ProjectGuid>
+        <ProjectGuid>{32820876-0D95-4D6B-A8C4-19662D07DF69}</ProjectGuid>
         <RootNamespace>MiniStudio</RootNamespace>
         <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     </PropertyGroup>

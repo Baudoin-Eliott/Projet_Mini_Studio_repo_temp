@@ -9,6 +9,9 @@
 
 #include <iostream>
 
+static float fixedUpdateDt = 1 / 60;
+#define FixedUpdateDt fixedUpdateDt
+
 GameManager::GameManager()
 {
 	mpWindow = nullptr;
@@ -90,6 +93,25 @@ void GameManager::Update()
 
 		entity->Update();
 
+		if (GetDeltaTime() <= FixedUpdateDt)
+		{
+			for (auto it = mEntities.begin(); it != mEntities.end(); )
+			{
+				Entity* entity = *it;
+
+				entity->FixedUpdate();
+
+				if (entity->ToDestroy() == false)
+				{
+					++it;
+					continue;
+				}
+
+				mEntitiesToDestroy.push_back(entity);
+				it = mEntities.erase(it);
+			}
+		}
+
 		if (entity->ToDestroy() == false)
 		{
 			++it;
@@ -99,6 +121,7 @@ void GameManager::Update()
 		mEntitiesToDestroy.push_back(entity);
 		it = mEntities.erase(it);
 	}
+
 
 	//Collision
 	for (auto it1 = mEntities.begin(); it1 != mEntities.end(); ++it1)
