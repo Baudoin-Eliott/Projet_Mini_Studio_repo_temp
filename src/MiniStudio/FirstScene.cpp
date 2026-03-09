@@ -34,6 +34,9 @@ void FirstScene::OnInitialize()
 	m_rectPlayer->SetPosition(760, 360);
 	m_rectPlayer->SetRigidBody(true);
 	m_rectPlayer->SetStatic(true);
+
+	m_cam->setPosition(m_player->GetPosition());
+	GameManager::Get()->setCamera(*m_cam);
 }
 
 void FirstScene::OnWindowEvent(const sf::Event& event)
@@ -49,4 +52,7 @@ void FirstScene::OnUpdate()
 {
 	Debug::DrawText(640, 200, "MiniStudio Project", 0.5, 0.5, sf::Color::White);
 	Debug::DrawText(640, 230, "Groupe 9", 0.5, 0.5, sf::Color::White);
+
+	m_cam->setPosition(m_player->GetPosition());
+	GameManager::Get()->setCamera(*m_cam);
 }

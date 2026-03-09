@@ -78,6 +78,10 @@ void GameManager::Run()
 	}
 }
 
+void GameManager::setCamera(const Camera& cam)
+{
+	mpWindow->setView(cam.getView());
+}
 
 void GameManager::Update()
 {

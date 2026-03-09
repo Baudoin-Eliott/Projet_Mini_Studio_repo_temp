@@ -1,24 +1,20 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 
 class Camera
 {
-
 private:
-	float m_x;
-	float m_y;
 
-	float m_width;
-	float m_height;
-
+	sf::View m_view = sf::View({ 640.f, 360.f }, { 1280.f, 720.f });
 
 public:
 
-	Camera(float _x, float _y, float _w, float _h) : m_x(_x), m_y(_y), m_width(_w), m_height(_h)
-	{}
+	void setPosition(const sf::Vector2f& _targetPos)
+	{ 
+		m_view.setCenter(_targetPos);
+	}
 
-
-	float getScreenX(float _reelX)  const { return _reelX - m_x; }
-	float getScreenY(float _reelY) const { return _reelY - m_y; }
+	const sf::View getView() const { return m_view; }
 
 };

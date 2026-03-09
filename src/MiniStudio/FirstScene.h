@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "RectPlayer.h"
 #include "Wall.h"
+#include "Camera.h"
 
 
 class FirstScene : public Scene
@@ -11,6 +12,10 @@ class FirstScene : public Scene
 private:
 	Player* m_player;
 	RectPlayer* m_rectPlayer;
+
+	Camera* m_cam = new Camera();
+
+	TmxMap m_map;
 
 public:
 	void OnInitialize() override;

@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include "Camera.h"
 
 class Entity;
 class Scene;
@@ -23,6 +24,8 @@ class GameManager
 
 	sf::RenderWindow* mpWindow;
 	sf::Font mFont;
+
+
 
 	Scene* mpScene;
 
@@ -53,6 +56,8 @@ public:
 
 	template<typename T>
 	void LaunchScene();
+
+	void setCamera(const Camera& cam);
 
 	float GetDeltaTime() const { return mDeltaTime; }
 	Scene* GetScene() const { return mpScene; }
