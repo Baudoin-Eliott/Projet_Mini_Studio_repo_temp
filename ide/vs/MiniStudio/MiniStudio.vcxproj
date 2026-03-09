@@ -13,7 +13,7 @@
     <PropertyGroup Label="Globals">
         <VCProjectVersion>17.0</VCProjectVersion>
         <Keyword>Win32Proj</Keyword>
-        <ProjectGuid>{97EAFF83-EE8B-41F0-A0E5-CA09860C99E5}</ProjectGuid>
+        <ProjectGuid>{1FF34964-8B1A-46EA-8B9C-115F26B1A094}</ProjectGuid>
         <RootNamespace>MiniStudio</RootNamespace>
         <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     </PropertyGroup>
@@ -66,7 +66,6 @@
             <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
             <ConformanceMode>true</ConformanceMode>
             <PrecompiledHeader>NotUsing</PrecompiledHeader>
-            <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
             <LanguageStandard>stdcpp20</LanguageStandard>
             <AdditionalIncludeDirectories>$(SolutionDir)../../SFML-2.5.1/include; $(SolutionDir)../../src/LightEngine</AdditionalIncludeDirectories>
         </ClCompile>
@@ -96,27 +95,16 @@
     <ItemGroup>
         <ClCompile Include="..\..\..\src\MiniStudio\FirstScene.cpp"/>
         <ClCompile Include="..\..\..\src\MiniStudio\main.cpp"/>
-        <ClCompile Include="..\..\..\src\MiniStudio\pch.cpp">
-            <PrecompiledHeader Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">Create</PrecompiledHeader>
-            <PrecompiledHeader Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">Create</PrecompiledHeader>
-        </ClCompile>
         <ClCompile Include="..\..\..\src\MiniStudio\Player.cpp"/>
         <ClCompile Include="..\..\..\src\MiniStudio\RectPlayer.cpp"/>
     </ItemGroup>
     <ItemGroup>
         <ClInclude Include="..\..\..\src\MiniStudio\FirstScene.h"/>
-        <ClInclude Include="..\..\..\src\MiniStudio\main.h"/>
-        <ClInclude Include="..\..\..\src\MiniStudio\pch.h"/>
         <ClInclude Include="..\..\..\src\MiniStudio\Player.h"/>
         <ClInclude Include="..\..\..\src\MiniStudio\RectPlayer.h"/>
-        <ClInclude Include="..\..\..\src\MiniStudio\resource.h"/>
         <ClInclude Include="..\..\..\src\MiniStudio\Wall.h"/>
     </ItemGroup>
-    <ItemGroup>
-        <None Include="..\..\..\src\MiniStudio\app.ico"/>
-        <None Include="..\..\..\src\MiniStudio\app.rc"/>
-        <None Include="..\..\..\src\MiniStudio\small.ico"/>
-    </ItemGroup>
+    <ItemGroup/>
     <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
     <ImportGroup Label="ExtensionTargets"/>
 </Project>

@@ -3,8 +3,12 @@
 
 #include <SFML/Window.hpp>
 
+#include "ActionMap.h"
+
 
 class GameManager;
+
+
 
 class InputManager
 {
@@ -14,9 +18,23 @@ class InputManager
         bool isRelease = false;
     };
 
+
 private:
 
+    enum class JoystickButton
+    {
+        Triangle,
+        Rond,
+        Croix,
+        Carre,
 
+        count
+    };
+
+    ActionMap<JoystickButton> m_joystickButton;
+
+    //manette
+    std::unordered_map <int, States > m_joystickStates;
 
     //clavier
     std::unordered_map<sf::Keyboard::Key, States> m_keysStates;
@@ -44,6 +62,10 @@ public:
 
 
     //getter
+    bool isJoystickDown(const sf::Joystick::Axis _joystick) const;
+    bool isJoystickHeld(const sf::Joystick::Axis _joystick) const;
+    bool isJoystickRelease(const sf::Joystick::Axis _joystick) const;
+
     bool isKeyDown(const sf::Keyboard::Key _key) const ;
     bool isKeyHeld(const sf::Keyboard::Key _key) const ;
     bool isKeyRelease(const sf::Keyboard::Key _key) const ;

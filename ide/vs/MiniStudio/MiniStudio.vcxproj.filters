@@ -2,15 +2,15 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
     <ItemGroup>
         <Filter Include="header">
-            <UniqueIdentifier>{F087EE33-2D9D-4FF1-8B2E-42A3B718916D}</UniqueIdentifier>
+            <UniqueIdentifier>{7BD7F2D5-44BA-41A1-AF46-6CB3319DBB6D}</UniqueIdentifier>
             <Extensions>h;hpp</Extensions>
         </Filter>
         <Filter Include="resource">
-            <UniqueIdentifier>{2F1C4B3D-2485-441F-8B0A-D906D29F79B0}</UniqueIdentifier>
+            <UniqueIdentifier>{995623E0-06CF-4C52-91F1-6C73A045226B}</UniqueIdentifier>
             <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
         </Filter>
         <Filter Include="source">
-            <UniqueIdentifier>{A536765B-E5FF-4B07-AE41-DB2228DF4346}</UniqueIdentifier>
+            <UniqueIdentifier>{AB6E1DA3-C873-4E36-BD3E-AFF89D5E5A24}</UniqueIdentifier>
             <Extensions>cpp;c</Extensions>
         </Filter>
     </ItemGroup>
@@ -19,9 +19,6 @@
             <Filter>source</Filter>
         </ClCompile>
         <ClCompile Include="..\..\..\src\MiniStudio\main.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
-        <ClCompile Include="..\..\..\src\MiniStudio\pch.cpp">
             <Filter>source</Filter>
         </ClCompile>
         <ClCompile Include="..\..\..\src\MiniStudio\Player.cpp">
@@ -33,32 +30,14 @@
         <ClInclude Include="..\..\..\src\MiniStudio\FirstScene.h">
             <Filter>header</Filter>
         </ClInclude>
-        <ClInclude Include="..\..\..\src\MiniStudio\main.h">
-            <Filter>header</Filter>
-        </ClInclude>
-        <ClInclude Include="..\..\..\src\MiniStudio\pch.h">
-            <Filter>header</Filter>
-        </ClInclude>
         <ClInclude Include="..\..\..\src\MiniStudio\Player.h">
             <Filter>header</Filter>
         </ClInclude>
         <ClInclude Include="..\..\..\src\MiniStudio\RectPlayer.h">
             <Filter>header</Filter>
         </ClInclude>
-        <ClInclude Include="..\..\..\src\MiniStudio\resource.h">
-            <Filter>header</Filter>
-        </ClInclude>
         <ClInclude Include="..\..\..\src\MiniStudio\Wall.h">
             <Filter>header</Filter>
         </ClInclude>
-        <None Include="..\..\..\src\MiniStudio\app.ico">
-            <Filter>resource</Filter>
-        </None>
-        <None Include="..\..\..\src\MiniStudio\app.rc">
-            <Filter>resource</Filter>
-        </None>
-        <None Include="..\..\..\src\MiniStudio\small.ico">
-            <Filter>resource</Filter>
-        </None>
     </ItemGroup>
 </Project>

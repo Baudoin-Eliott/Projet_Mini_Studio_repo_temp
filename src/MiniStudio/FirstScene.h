@@ -11,6 +11,7 @@ class FirstScene : public Scene
 private:
 	Player* m_player;
 	RectPlayer* m_rectPlayer;
+	TmxMap m_map;
 
 public:
 	void OnInitialize() override;

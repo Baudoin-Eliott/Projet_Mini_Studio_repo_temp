@@ -4,12 +4,14 @@
 void Player::OnInitialize()
 {
 	m_actions.bind(Action::MoveUp, { {sf::Keyboard::Z, TriggerState::Held} });
+	m_actions.bind(Action::MoveUp, { {sf::Joystick::isButtonPressed(0, JoystickButton::Triangle), TriggerState::Held}});
 
 	m_actions.bind(Action::MoveDown, { {sf::Keyboard::S, TriggerState::Held} });
 
 	m_actions.bind(Action::MoveLeft, { {sf::Keyboard::Q, TriggerState::Held} });
 
 	m_actions.bind(Action::MoveRight, { {sf::Keyboard::D, TriggerState::Held} });
+
 
 }
 

@@ -8,6 +8,11 @@ void InputManager::update()
 {
 
 	//mise a jours des etats des inputs
+
+	for (auto& paire : m_joystickStates) {
+		if (paire.second.isDown) { paire.second.isDown = false; paire.second.isHeld = true; }
+		if (paire.second.isRelease) { paire.second.isRelease = false; paire.second.isHeld = false; }
+	}
 	for (auto& paire : m_keysStates) {
 		if (paire.second.isDown) { paire.second.isDown = false; paire.second.isHeld = true; }
 		if (paire.second.isRelease) { paire.second.isRelease = false; paire.second.isHeld = false; }
@@ -37,6 +42,14 @@ void InputManager::update()
 			break;
 
 
+		case sf::Event::JoystickButtonPressed:
+			m_joystickStates[event.joystickButton.button] = { true, false, false };
+			break;
+
+		case sf::Event::JoystickButtonReleased:
+			m_joystickStates[event.joystickButton.button] = { false, false, true };
+			break;
+
 		case sf::Event::KeyPressed:
 			m_keysStates[event.key.code] = { true, false, false };
 			break;
@@ -65,6 +78,27 @@ void InputManager::update()
 	}
 
 
+}
+
+bool InputManager::isJoystickDown(const sf::Joystick::Axis _joystick) const
+{
+	if (auto it = m_joystickStates.find(_joystick); it != m_joystickStates.end())
+		return it->second.isDown;
+	return false;
+}
+
+bool InputManager::isJoystickHeld(const sf::Joystick::Axis _joystick) const
+{
+	if (auto it = m_joystickStates.find(_joystick); it != m_joystickStates.end())
+		return it->second.isHeld;
+	return false;
+}
+
+bool InputManager::isJoystickRelease(const sf::Joystick::Axis _joystick) const
+{
+	if (auto it = m_joystickStates.find(_joystick); it != m_joystickStates.end())
+		return it->second.isRelease;
+	return false;
 }
 
 bool InputManager::isKeyDown(const sf::Keyboard::Key _key) const
